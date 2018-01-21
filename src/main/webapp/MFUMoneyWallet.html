@@ -4,20 +4,80 @@
 <body>
     <h1>MFU Money Wallet</h1>
     <form action="action_page.php">
-        Product Name:
+        Wallet:
         <br>
-        <input type="text" name="Product Name">
+        <input type="text" name="Wallet" id="_wallet">
+        <br> Product Name:
+        <br>
+        <input type="text" name="Product Name" id="_productName">
         <br> Price:
         <br>
-        <input type="text" name="Price">
+        <input type="text" name="Price" id="_price">
+        <br> Current Money:
+        <br>
+        <input type="text" name="CurrentMoney" id="_cureentMoney">
+        <br>
+        <br>
         <br> Fee:
         <br>
-        <input type="text" name="Fee">
+        <input type="text" name="Fee" id="_fee">
+
+
         <br>
         <br>
 
     </form>
 
 </body>
+
+</html>
+
+<script language="JavaScript">
+    var ajax = new XMLHttpRequest();
+    ajax.onload = functionName;
+    ajax.onerror = errorFunctionName;
+    ajax.open("GET", "http://localhost:8080/api/hello", true);
+    ajax.send();
+    function functionName() {
+        console.log(this);
+        if (this.status == 200) {
+            var json = JSON.parse(this.responseText);
+            var _productName = json.productName;
+            var _price = json.price;
+            var _cureentMoney = json.cureentMoney;
+            var _fee = json.fee;
+
+            if (currentMoney = 0) {
+                currentMoney = wallet - price;
+                return cureentMoney;
+            }
+
+            document.getElementById("_productName").innerHTML = _productName;
+            document.getElementById("_price").innerHTML = _price;
+            document.getElementById("_cureentMoney").innerHTML = _cureentMoney;
+            document.getElementById("_fee").innerHTML = _fee;
+        } else {
+            // TODO
+        }
+    }
+    function errorFunctionName(e) {
+        console.log(this);
+        console.error(e);
+    }
+</script>
+
+
+<script language="JavaScript">
+    function sendDataToServer() {
+        var ajax = new XMLHttpRequest();
+        ajax.onload = receiveResponse;
+        ajax.open("POST", "http://localhost:8080/api/hello", true);
+        ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        ajax.send(JSON.stringify({ name: "Demo2" }));
+    }
+    function receiveResponse() {
+        console.log(this.responseText);
+    }
+</script>
 
 </html>
