@@ -82,6 +82,9 @@ class Product {
     private String id;
     private String productName;
     private Double price;
+    private Double currentMoney;
+    private Double fee;
+    private Double wallet;
 
     public String getId() {
         return id;
@@ -106,5 +109,30 @@ class Product {
     public void setPrice(Double price){
         this.price = price;
     }
+
+    public Double getCurrentMoney() {
+        return currentMoney;
+    }
+
+    public void setCurrentMoney(Double currentMoney){
+        this.currentMoney = currentMoney;
+    }
+
+    public Double getFee() {
+        return fee;
+    }
+
+    public void setFee(Double fee){
+        this.fee = fee;
+    }
+
+    public Double getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Double wallet){
+        this.wallet = wallet;
+    }
+}
 }
 }
