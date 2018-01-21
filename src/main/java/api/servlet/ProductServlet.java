@@ -29,37 +29,7 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-<<<<<<< HEAD
-                // String docType =
-                // "<!doctype html public \"-//w3c//dtd html 4.0 " + "transitional//en\">\n";
-                // out.println(docType +
-                // "<html>\n" +
-                // "<head><title>" + productName + "</title></head>\n" +
-                // "<body bgcolor = \"#f0f0f0\">\n" +
-                // "<h1 align = \"center\">" + price + "</h1>\n");
 
-                try {
-                    // Register JDBC driver
-                    Class.forName("com.mysql.jdbc.Driver");
-           
-                    // Open a connection
-                    Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-           
-                    // Execute SQL query
-                    Statement stmt = conn.createStatement();
-                    String sql;
-                    sql = "SELECT * FROM wallet.cart";
-                    ResultSet rs = stmt.executeQuery(sql);
-                    // Extract data from result set
-
-         while(rs.next()){
-            //Retrieve by column name
-            Product product = new Product();
-            product.setId(rs.getString("0007"));
-            product.setProductName(rs.getString("Coco"));
-            product.setPrice(rs.getDouble("55.00"));
-                }
-=======
 
         Product product = new Product();
         product.setId("0007");
@@ -68,25 +38,12 @@ public class ProductServlet extends HttpServlet {
         product.setPrice(55.00);
         product.setCurrentMoney(1445.00);
         product.setFee(1.00);
->>>>>>> Deer
+
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(resp.getOutputStream(), product);
 
-        // Clean-up environment
-        rs.close();
-        stmt.close();
-        conn.close();
-     } catch(SQLException se) {
-        //Handle errors for JDBC
-        se.printStackTrace();
-     } catch(Exception e) {
-        //Handle errors for Class.forName
-        e.printStackTrace();
-     } finally {
-        //finally block used to close resources
-
-    }
+      
 }
 
 class Product {
