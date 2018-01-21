@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
-@WebServlet("/product")
+@WebServlet("/hello")
 public class ProductServlet extends HttpServlet {
 
                 // JDBC driver name and database URL
@@ -29,6 +29,7 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+<<<<<<< HEAD
                 // String docType =
                 // "<!doctype html public \"-//w3c//dtd html 4.0 " + "transitional//en\">\n";
                 // out.println(docType +
@@ -58,6 +59,16 @@ public class ProductServlet extends HttpServlet {
             product.setProductName(rs.getString("Coco"));
             product.setPrice(rs.getDouble("55.00"));
                 }
+=======
+
+        Product product = new Product();
+        product.setId("0007");
+        product.setWallet(1500.00);
+        product.setProductName("Coco");
+        product.setPrice(55.00);
+        product.setCurrentMoney(1445.00);
+        product.setFee(1.00);
+>>>>>>> Deer
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(resp.getOutputStream(), product);
@@ -126,13 +137,12 @@ class Product {
         this.fee = fee;
     }
 
-    public Double getWallet() {
+    public Double getWAllet() {
         return wallet;
     }
 
     public void setWallet(Double wallet){
         this.wallet = wallet;
     }
-}
 }
 }
